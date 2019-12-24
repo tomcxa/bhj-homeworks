@@ -4,6 +4,7 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    //this.timer = container.querySelector('.status__timer');
 
     this.reset();
 
@@ -12,6 +13,7 @@ class Game {
 
   reset() {
     this.setNewWord();
+    this.count = 0;
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
   }
@@ -24,6 +26,18 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
+
+    window.addEventListener('keypress', (event) => {
+      const char = event.code.substring(3).toLowerCase(),
+        currentChar = this.currentSymbol.textContent;
+      
+      if (char === currentChar) {
+        this.success();
+      } else {
+        this.fail();
+        clearInterval(timerID);
+      }
+    });
   }
 
   success() {
@@ -56,28 +70,28 @@ class Game {
 
   getWord() {
     const words = [
-        'bob',
-        'awesome',
-        'netology',
-        'hello',
-        'kitty',
-        'rock',
-        'youtube',
-        'popcorn',
-        'cinema',
-        'love',
-        'javascript'
-      ],
+      'bob',
+      'awesome',
+      'netology',
+      'hello',
+      'kitkat',
+      'rock',
+      'youtube',
+      'popcorn',
+      'cinema',
+      'love',
+      'javascript'
+    ],
       index = Math.floor(Math.random() * words.length);
 
-    return words[index];
+    return words[index].toLowerCase();
   }
 
   renderWord(word) {
     const html = [...word]
       .map(
         (s, i) =>
-          `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
+          `<span class="symbol ${i === 0 ? 'symbol_current' : ''}">${s}</span>`
       )
       .join('');
     this.wordElement.innerHTML = html;

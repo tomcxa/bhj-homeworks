@@ -1,5 +1,47 @@
+body {
+  background-color: rgb(43, 32, 32);
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.status__name {
+  font-size: 100px;
+  margin: 40px;
+}
+
+.status__name span {
+  display: block;
+  padding: 30px 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.status__wins {
+  background-color: rgb(54, 116, 54);
+}
+
+.status__timer {
+  background-color: rgb(112, 161, 177);
+  font-size: 60px;
+}
+
+.status__loss {
+  background-color: rgb(209, 61, 61);
+}
+
+.word {
+  text-align: center;
+  color: rgb(216, 208, 180);
+}
+
 .symbol {
   font-size: 50px;
+  border-bottom: 5px solid rgb(141, 125, 66);
 }
 
 .symbol_correct {
