@@ -39,7 +39,9 @@ class Game {
           }
         }, 1000);
       }
+
       this.startInterval = false;
+
       if (char === currentChar) {
         this.success();
       } else {
