@@ -4,7 +4,9 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
-    //this.timer = container.querySelector('.status__timer');
+    this.timer = container.querySelector('.status__timer');//блок таймера
+    this.count = 0;//считаем нажатия
+    this.interval;//будующий интервал
 
     this.reset();
 
@@ -13,7 +15,6 @@ class Game {
 
   reset() {
     this.setNewWord();
-    this.count = 0;
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
   }
@@ -30,12 +31,19 @@ class Game {
     window.addEventListener('keypress', (event) => {
       const char = event.code.substring(3).toLowerCase(),
         currentChar = this.currentSymbol.textContent;
+
+      if (++this.count == 1) {
+        this.interval = setInterval(() => {
+          if (--this.timer.textContent == 0) {//Осторожно! двойной фэил возможен если при таймере 0 еще нажать не ту букву
+            this.fail();
+          }
+        }, 1000);
+      }
       
       if (char === currentChar) {
         this.success();
       } else {
         this.fail();
-        clearInterval(timerID);
       }
     });
   }
@@ -63,8 +71,10 @@ class Game {
   }
 
   setNewWord() {
+    clearInterval(this.interval);//если меняем слово сбрасываем таймер
+    this.count = 0; //и сбрасываем таймер
     const word = this.getWord();
-
+    this.timer.textContent = word.length;//устанавливаем значение таймера
     this.renderWord(word);
   }
 
