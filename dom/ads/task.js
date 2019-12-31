@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             delay = rotatorCases[currentCaseIndex].dataset.speed;
         //устанавливаем цвет    
         rotatorCases[currentCaseIndex].style.color = rotatorCases[currentCaseIndex].dataset.color;
-
+        
         function rotate() {//функция переключения кэйсов
             
             rotatorCases[currentCaseIndex].classList.remove('rotator__case_active');//удаляем активный элемент
@@ -20,14 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
             rotatorCases[currentCaseIndex].style.color = rotatorCases[currentCaseIndex].dataset.color;
             delay = rotatorCases[currentCaseIndex].dataset.speed;// обновляем задержку            
             rotatorCases[currentCaseIndex].classList.add('rotator__case_active');//меняем активный элемент
-
-            const interval = setInterval(rotate, delay); //запускаем отсчет для каждого элемента
-            setTimeout(() => {//останавливаем отсчет чтобы при каждом вызове не запускался новый
-                clearInterval(interval);//и не накладывался друг на друга
-            }, delay);
         }
-
-        rotate();//запускаем функцию для каждого отдельного ротатора
-        
+        //запускаем отсчет для каждого элемента
+        setTimeout(rotate, delay);
     });
 });
