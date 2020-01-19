@@ -1,0 +1,13 @@
+button {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 100px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}

@@ -15,7 +15,7 @@ function upload(file) {
 
     // отслеживаем процесс отправки
     xhr.upload.onprogress = function (event) {
-        progress.value = (progress.value < 1) ? progress.value + 0.1 : 0.9;
+        progress.value = (progress.value < 0.9) ? progress.value + 0.1 : 0.9;
         console.log(`Отправлено ${event.loaded} из ${event.total}`);
     };
 

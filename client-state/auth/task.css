@@ -6,21 +6,27 @@ body {
   display: none;
 }
 .signin_active {
+  text-align: center;
   display: block;
+  width: 200px;
+  margin: 0 auto;
 }
 .control {
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 20px;
   border: 1px solid gray;
   width: 200px;
   box-sizing: border-box;
+}
+.row {
+  margin-bottom: 8px;
 }
 
 .btn {
   background: green;
   color: white;
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 20px;
   border: none;
   display: block;
   width: 200px;
